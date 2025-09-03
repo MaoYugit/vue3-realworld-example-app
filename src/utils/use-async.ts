@@ -1,6 +1,6 @@
 import type { Ref } from 'vue'
 import { ref } from 'vue'
-import { routerPush } from 'src/router'
+import { routerPush } from 'src/router/index.ts'
 import { isFetchError } from 'src/services'
 import { userStorage } from 'src/store/user.ts'
 

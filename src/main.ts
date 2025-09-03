@@ -3,7 +3,7 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import registerGlobalComponents from './plugins/global-components'
 import setAuthorizationToken from './plugins/set-authorization-token'
-import { router } from './router'
+import { router } from './router/index'
 
 const app = createApp(App)
 

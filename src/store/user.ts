@@ -4,9 +4,9 @@ import { api } from 'src/services'
 import type { User } from 'src/services/api'
 import Storage from 'src/utils/storage'
 
-export const userStorage = new Storage<User>('user')
+export const userStorage = new Storage<User>('user') // 最好也别到导出? pinia但是why?
 
-export const isAuthorized = (): boolean => !!userStorage.get()
+// export const isAuthorized = (): boolean => !!userStorage.get()
 
 export const useUserStore = defineStore('user', () => {
   const user = ref(userStorage.get())
