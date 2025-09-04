@@ -5,12 +5,12 @@
   <!-- 2. 加载状态的 UI -->
   <div v-if="articlesDownloading" class="article-preview">
     <!-- Articles are downloading... -->
-    文章正在加载当中......
+    {{ t("article.loadingArticles") }}
   </div>
   <!-- 3. 空状态的 UI -->
   <div v-else-if="articles.length === 0" class="article-preview">
     <!-- No articles are here... yet. -->
-    这一部分当前没有文章
+    {{ t("article.noArticles") }}
   </div>
   <!-- 4. 正常渲染文章列表 -->
   <template v-else>
@@ -32,6 +32,7 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
 // 动态数据的来源
 import { useArticles } from "src/composable/useArticles";
 // 底部的分页器
@@ -40,6 +41,8 @@ import AppPagination from "./AppPagination.vue";
 import ArticlesListArticlePreview from "./ArticlesListArticlePreview.vue";
 // 列表顶部的导航栏
 import ArticlesListNavigation from "./ArticlesListNavigation.vue";
+
+const { t } = useI18n();
 
 // 核心逻辑：执行 useArticles() 并解构出所有需要用到的状态和方法。
 const {

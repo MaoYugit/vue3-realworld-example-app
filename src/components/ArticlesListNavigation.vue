@@ -84,7 +84,7 @@ const allLinks = computed<ArticlesListNavLink[]>(() => [
     name: "user-feed",
     routeName: "profile",
     routeParams: { username: props.username },
-    title: "t('navigation.myArticles')",
+    title: t("navigation.myArticles"),
   },
   {
     name: "user-favorites-feed",

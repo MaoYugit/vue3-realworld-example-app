@@ -1,7 +1,6 @@
 <template>
   <p>
-    <!-- Popular Tags -->
-    热门标签
+    {{ t("navigation.popularTags") }}
   </p>
 
   <div class="tag-list">
@@ -19,9 +18,10 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
 import { useTags } from "src/composable/useTags";
 
 const { tags, fetchTags } = useTags();
-
+const { t } = useI18n();
 await fetchTags();
 </script>

@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-light">
     <div class="container">
-      <AppLink class="navbar-brand" name="global-feed"> conduit </AppLink>
+      <AppLink class="navbar-brand" name="global-feed"> 知渠 </AppLink>
 
       <ul class="nav navbar-nav pull-xs-right">
         <li v-for="link in navLinks" :key="link.name" class="nav-item">
@@ -16,6 +16,9 @@
             {{ link.title }}
           </AppLink>
         </li>
+        <li class="nav-item">
+          <LanguageSwitcher />
+        </li>
       </ul>
     </div>
   </nav>
@@ -25,8 +28,13 @@
 import { computed } from "vue";
 import type { RouteParams } from "vue-router";
 import { storeToRefs } from "pinia";
+import { useI18n } from "vue-i18n";
 import type { AppRouteNames } from "src/router/routes";
 import { useUserStore } from "src/store/user";
+
+import LanguageSwitcher from "./LanguageSwitcher.vue";
+
+const { t } = useI18n();
 
 interface NavLink {
   name: AppRouteNames;
@@ -46,28 +54,28 @@ const displayStatus = computed(() =>
 const allNavLinks = computed<NavLink[]>(() => [
   {
     name: "global-feed",
-    title: "Home",
+    title: t("header.home"),
     display: "all",
   },
   {
     name: "login",
-    title: "Sign in",
+    title: t("header.signIn"),
     display: "anonym",
   },
   {
     name: "register",
-    title: "Sign up",
+    title: t("header.signUp"),
     display: "anonym",
   },
   {
     name: "create-article",
-    title: "New Post",
+    title: t("header.newPost"),
     display: "authorized",
     icon: "ion-compose",
   },
   {
     name: "settings",
-    title: "Settings",
+    title: t("header.settings"),
     display: "authorized",
     icon: "ion-gear-a",
   },

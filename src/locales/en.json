@@ -4,6 +4,18 @@
     "myFeed": "Your Feed",
     "myArticles": "My Articles",
     "favoritedArticles": "Favorited Articles",
-    "tagFeed": "{tag}"
+    "tagFeed": "{tag}",
+    "popularTags": "Popular Tags"
+  },
+  "header": {
+    "home": "Home",
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "newPost": "New Post",
+    "settings": "Settings"
+  },
+  "article": {
+    "loadingArticles": "Articles are loading...",
+    "noArticles": "No articles are here... yet."
   }
 }

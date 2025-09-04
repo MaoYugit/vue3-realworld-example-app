@@ -4,6 +4,18 @@
     "myFeed": "我的关注",
     "myArticles": "我的文章",
     "favoritedArticles": "我赞过的",
-    "tagFeed": "{tag}"
+    "tagFeed": "{tag}",
+    "popularTags": "热门标签"
+  },
+  "header": {
+    "home": "首页",
+    "signIn": "登录",
+    "signUp": "注册",
+    "newPost": "发布文章",
+    "settings": "设置"
+  },
+  "article": {
+    "loadingArticles": "文章正在加载中...",
+    "noArticles": "这里还没有文章哦。"
   }
 }

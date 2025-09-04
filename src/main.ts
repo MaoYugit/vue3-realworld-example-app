@@ -4,7 +4,7 @@ import App from "./App.vue";
 import registerGlobalComponents from "./plugins/global-components";
 import setAuthorizationToken from "./plugins/set-authorization-token";
 import { router } from "./router/index";
-import i18n from "./plugins/i18n";
+import { i18n } from "./plugins/i18n";
 
 const app = createApp(App);
 
