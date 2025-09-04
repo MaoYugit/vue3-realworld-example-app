@@ -1,5 +1,8 @@
 <template>
-  <p>Popular Tags</p>
+  <p>
+    <!-- Popular Tags -->
+    热门标签
+  </p>
 
   <div class="tag-list">
     <AppLink

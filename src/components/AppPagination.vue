@@ -9,8 +9,8 @@
       <a
         :aria-label="`Go to page ${pageNumber}`"
         class="page-link"
-        href="javascript:"
-        @click="onPageChange(pageNumber)"
+        href="#"
+        @click.prevent="onPageChange(pageNumber)"
         >{{ pageNumber }}</a
       >
     </li>

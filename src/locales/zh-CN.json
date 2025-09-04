@@ -1,0 +1,9 @@
+{
+  "navigation": {
+    "globalFeed": "全部文章",
+    "myFeed": "我的关注",
+    "myArticles": "我的文章",
+    "favoritedArticles": "我赞过的",
+    "tagFeed": "{tag}"
+  }
+}

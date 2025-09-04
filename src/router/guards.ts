@@ -3,7 +3,7 @@
 // 这个文件只负责定义所有的路由权限检查逻辑
 
 import type { Router } from "vue-router";
-import { useUserStore } from "../store/user"; // 确保路径正确
+import { useUserStore } from "src/store/user"; // 确保路径正确
 
 export function setupGuards(router: Router): void {
   // 全局前置守卫

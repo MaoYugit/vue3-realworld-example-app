@@ -1,0 +1,9 @@
+{
+  "navigation": {
+    "globalFeed": "Global Feed",
+    "myFeed": "Your Feed",
+    "myArticles": "My Articles",
+    "favoritedArticles": "Favorited Articles",
+    "tagFeed": "{tag}"
+  }
+}
