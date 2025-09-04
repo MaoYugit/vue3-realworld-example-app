@@ -1,16 +1,10 @@
 <template>
   <p v-if="!profile">
-    <AppLink name="login">
-      Sign in
-    </AppLink> or <AppLink name="register">
-      sign up
-    </AppLink> to add comments on this article.
+    <AppLink name="login"> Sign in </AppLink> or
+    <AppLink name="register"> sign up </AppLink> to add comments on this
+    article.
   </p>
-  <form
-    v-else
-    class="card comment-form"
-    @submit.prevent="submitComment"
-  >
+  <form v-else class="card comment-form" @submit.prevent="submitComment">
     <div class="card-block">
       <textarea
         v-model="comment"
@@ -25,7 +19,7 @@
         :src="profile.image"
         class="comment-author-img"
         :alt="profile.username"
-      >
+      />
       <button
         aria-label="Submit"
         type="submit"
@@ -39,34 +33,36 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-import { storeToRefs } from 'pinia'
-import { useProfile } from 'src/composable/useProfile'
-import { api } from 'src/services'
-import type { Comment } from 'src/services/api'
-import { useUserStore } from 'src/store/user'
+import { computed, ref } from "vue";
+import { storeToRefs } from "pinia";
+import { useProfile } from "src/composable/useProfile";
+import { api } from "src/services";
+import type { Comment } from "src/services/api";
+import { useUserStore } from "src/store/user";
 
 interface Props {
-  articleSlug: string
+  articleSlug: string;
 }
 
-const props = defineProps<Props>()
+const props = defineProps<Props>();
 const emit = defineEmits<{
-  (e: 'addComment', comment: Comment): void
-}>()
+  (e: "addComment", comment: Comment): void;
+}>();
 
-const { user } = storeToRefs(useUserStore())
+const { user } = storeToRefs(useUserStore());
 
-const username = computed(() => user.value?.username ?? '')
-const { profile } = useProfile({ username })
+const username = computed(() => user.value?.username ?? "");
+const { profile } = useProfile({ username });
 
-const comment = ref('')
+const comment = ref("");
 
 async function submitComment() {
   const newComment = await api.articles
-    .createArticleComment(props.articleSlug, { comment: { body: comment.value } })
-    .then(res => res.data.comment)
-  emit('addComment', newComment)
-  comment.value = ''
+    .createArticleComment(props.articleSlug, {
+      comment: { body: comment.value },
+    })
+    .then((res) => res.data.comment);
+  emit("addComment", newComment);
+  comment.value = "";
 }
 </script>

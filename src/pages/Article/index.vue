@@ -3,9 +3,7 @@
     <Suspense>
       <ArticleDetail />
       <template #fallback>
-        <div class="container page">
-          Article is downloading...
-        </div>
+        <div class="container page">Article is downloading...</div>
       </template>
     </Suspense>
 
@@ -16,21 +14,19 @@
         </div>
       </div>
       <template #fallback>
-        <div class="container page">
-          Comments are downloading...
-        </div>
+        <div class="container page">Comments are downloading...</div>
       </template>
     </Suspense>
   </div>
 </template>
 
 <script setup lang="ts">
-import ArticleDetail from 'src/components/ArticleDetail.vue'
-import ArticleDetailComments from 'src/components/ArticleDetailComments.vue'
+import ArticleDetail from "src/components/ArticleDetail.vue";
+import ArticleDetailComments from "src/components/ArticleDetailComments.vue";
 </script>
 
 <style scoped>
-.row{
+.row {
   margin-right: 0;
 }
 </style>

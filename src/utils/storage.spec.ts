@@ -1,29 +1,29 @@
-import { beforeAll, describe, expect, it } from 'vitest'
-import Storage from './storage'
+import { beforeAll, describe, expect, it } from "vitest";
+import Storage from "./storage";
 
-describe('# Storage', () => {
-  const DATA = { foo: 'bar' }
-  const KEY = 'key'
+describe("# Storage", () => {
+  const DATA = { foo: "bar" };
+  const KEY = "key";
 
-  const storage = new Storage<typeof DATA>(KEY)
+  const storage = new Storage<typeof DATA>(KEY);
 
   beforeAll(() => {
-    storage.remove()
-  })
+    storage.remove();
+  });
 
-  it('should be called with correct key', () => {
-    expect(storage.get()).toBeNull()
-  })
+  it("should be called with correct key", () => {
+    expect(storage.get()).toBeNull();
+  });
 
-  it('should be set value correctly', () => {
-    storage.set(DATA)
+  it("should be set value correctly", () => {
+    storage.set(DATA);
 
-    expect(storage.get()).toEqual(DATA)
-  })
+    expect(storage.get()).toEqual(DATA);
+  });
 
-  it('should be remove correctly', () => {
-    storage.remove()
+  it("should be remove correctly", () => {
+    storage.remove();
 
-    expect(storage.get()).toBeNull()
-  })
-})
+    expect(storage.get()).toBeNull();
+  });
+});

@@ -1,9 +1,9 @@
-import type AppLink from 'src/components/AppLink.vue'
+import type AppLink from "src/components/AppLink.vue";
 
-declare module '@vue/runtime-core' {
+declare module "@vue/runtime-core" {
   export interface GlobalComponents {
-    RouterLink: typeof import('vue-router')['RouterLink']
-    RouterView: typeof import('vue-router')['RouterView']
-    AppLink: typeof AppLink
+    RouterLink: typeof import("vue-router")["RouterLink"];
+    RouterView: typeof import("vue-router")["RouterView"];
+    AppLink: typeof AppLink;
   }
 }

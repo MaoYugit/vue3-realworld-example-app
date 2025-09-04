@@ -3,21 +3,14 @@
     <div class="container page">
       <div class="row">
         <div class="col-md-6 offset-md-3 col-xs-12">
-          <h1 class="text-xs-center">
-            Sign up
-          </h1>
+          <h1 class="text-xs-center">Sign up</h1>
           <p class="text-xs-center">
-            <AppLink name="login">
-              Have an account?
-            </AppLink>
+            <AppLink name="login"> Have an account? </AppLink>
           </p>
 
           <ul class="error-messages">
-            <li
-              v-for="(error, field) in errors"
-              :key="field"
-            >
-              {{ field }} {{ error ? error[0] : '' }}
+            <li v-for="(error, field) in errors" :key="field">
+              {{ field }} {{ error ? error[0] : "" }}
             </li>
           </ul>
 
@@ -34,7 +27,7 @@
                 type="text"
                 required
                 placeholder="Your Name"
-              >
+              />
             </fieldset>
             <fieldset class="form-group">
               <input
@@ -44,7 +37,7 @@
                 type="email"
                 required
                 placeholder="Email"
-              >
+              />
             </fieldset>
             <fieldset class="form-group">
               <input
@@ -55,7 +48,7 @@
                 :minLength="8"
                 required
                 placeholder="Password"
-              >
+              />
             </fieldset>
             <button
               type="submit"
@@ -72,37 +65,34 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
-import { routerPush } from 'src/router'
-import { api, isFetchError } from 'src/services'
-import type { NewUser } from 'src/services/api'
-import { useUserStore } from 'src/store/user'
+import { reactive, ref } from "vue";
+import { routerPush } from "src/router";
+import { api, isFetchError } from "src/services";
+import type { NewUser } from "src/services/api";
+import { useUserStore } from "src/store/user";
 
-const formRef = ref<HTMLFormElement | null>(null)
+const formRef = ref<HTMLFormElement | null>(null);
 const form: NewUser = reactive({
-  username: '',
-  email: '',
-  password: '',
-})
+  username: "",
+  email: "",
+  password: "",
+});
 
-const { updateUser } = useUserStore()
+const { updateUser } = useUserStore();
 
-const errors = ref()
+const errors = ref();
 
 async function register() {
-  errors.value = {}
+  errors.value = {};
 
-  if (!formRef.value?.checkValidity())
-    return
+  if (!formRef.value?.checkValidity()) return;
 
   try {
-    const result = await api.users.createUser({ user: form })
-    updateUser(result.data.user)
-    await routerPush('global-feed')
-  }
-  catch (error) {
-    if (isFetchError(error))
-      errors.value = error.error?.errors
+    const result = await api.users.createUser({ user: form });
+    updateUser(result.data.user);
+    await routerPush("global-feed");
+  } catch (error) {
+    if (isFetchError(error)) errors.value = error.error?.errors;
   }
 }
 </script>

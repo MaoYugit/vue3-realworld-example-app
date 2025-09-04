@@ -29,7 +29,7 @@
       </ul>
     </div>
 
-    <hr>
+    <hr />
 
     <div class="article-actions">
       <ArticleDetailMeta
@@ -42,20 +42,22 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive } from 'vue'
-import { useRoute } from 'vue-router'
-import marked from 'src/plugins/marked'
-import { api } from 'src/services'
-import type { Article } from 'src/services/api'
-import ArticleDetailMeta from './ArticleDetailMeta.vue'
+import { computed, reactive } from "vue";
+import { useRoute } from "vue-router";
+import marked from "src/plugins/marked";
+import { api } from "src/services";
+import type { Article } from "src/services/api";
+import ArticleDetailMeta from "./ArticleDetailMeta.vue";
 
-const route = useRoute()
-const slug = route.params.slug as string
-const article: Article = reactive(await api.articles.getArticle(slug).then(res => res.data.article))
+const route = useRoute();
+const slug = route.params.slug as string;
+const article: Article = reactive(
+  await api.articles.getArticle(slug).then((res) => res.data.article)
+);
 
-const articleHandledBody = computed(() => marked(article.body))
+const articleHandledBody = computed(() => marked(article.body));
 
 function updateArticle(newArticle: Article) {
-  Object.assign(article, newArticle)
+  Object.assign(article, newArticle);
 }
 </script>

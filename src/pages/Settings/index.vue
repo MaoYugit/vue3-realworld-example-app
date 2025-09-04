@@ -3,13 +3,11 @@
     <div class="container page">
       <div class="row">
         <div class="col-md-6 offset-md-3 col-xs-12">
-          <h1 class="text-xs-center">
-            Your Settings
-          </h1>
+          <h1 class="text-xs-center">Your Settings</h1>
 
           <ul class="error-messages">
             <li v-for="(error, field) in errors" :key="field">
-              {{ field }} {{ error ? error[0] : '' }}
+              {{ field }} {{ error ? error[0] : "" }}
             </li>
           </ul>
 
@@ -22,7 +20,7 @@
                   type="text"
                   class="form-control"
                   placeholder="URL of profile picture"
-                >
+                />
               </fieldset>
               <fieldset class="form-group">
                 <input
@@ -31,7 +29,7 @@
                   type="text"
                   class="form-control form-control-lg"
                   placeholder="Your name"
-                >
+                />
               </fieldset>
               <fieldset class="form-group">
                 <textarea
@@ -49,7 +47,7 @@
                   type="email"
                   class="form-control form-control-lg"
                   placeholder="Email"
-                >
+                />
               </fieldset>
               <fieldset class="form-group">
                 <input
@@ -58,7 +56,7 @@
                   type="password"
                   class="form-control form-control-lg"
                   placeholder="New password"
-                >
+                />
               </fieldset>
               <button
                 class="btn btn-lg btn-primary pull-xs-right"
@@ -70,7 +68,7 @@
             </fieldset>
           </form>
 
-          <hr>
+          <hr />
 
           <button
             class="btn btn-outline-danger"
@@ -86,53 +84,56 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, reactive, ref } from 'vue'
-import { routerPush } from 'src/router'
-import { api, isFetchError } from 'src/services'
-import type { UpdateUser } from 'src/services/api'
-import { useUserStore } from 'src/store/user'
+import { computed, onMounted, reactive, ref } from "vue";
+import { routerPush } from "src/router";
+import { api, isFetchError } from "src/services";
+import type { UpdateUser } from "src/services/api";
+import { useUserStore } from "src/store/user";
 
-const form: UpdateUser = reactive({})
+const form: UpdateUser = reactive({});
 
-const userStore = useUserStore()
-const errors = ref()
+const userStore = useUserStore();
+const errors = ref();
 
 async function onSubmit() {
-  errors.value = {}
+  errors.value = {};
 
   try {
     // eslint-disable-next-line unicorn/no-array-reduce
-    const filteredForm = Object.entries(form).reduce((form, [k, v]) => v === null ? form : Object.assign(form, { [k]: v }), {})
-    const userData = await api.user.updateCurrentUser({ user: filteredForm }).then(res => res.data.user)
-    userStore.updateUser(userData)
-    await routerPush('profile', { username: userData.username })
-  }
-  catch (error) {
-    if (isFetchError(error))
-      errors.value = error.error?.errors
+    const filteredForm = Object.entries(form).reduce(
+      (form, [k, v]) => (v === null ? form : Object.assign(form, { [k]: v })),
+      {}
+    );
+    const userData = await api.user
+      .updateCurrentUser({ user: filteredForm })
+      .then((res) => res.data.user);
+    userStore.updateUser(userData);
+    await routerPush("profile", { username: userData.username });
+  } catch (error) {
+    if (isFetchError(error)) errors.value = error.error?.errors;
   }
 }
 
 async function onLogout() {
-  userStore.updateUser(null)
-  await routerPush('global-feed')
+  userStore.updateUser(null);
+  await routerPush("global-feed");
 }
 
 onMounted(async () => {
-  if (!userStore.isAuthorized)
-    return await routerPush('login')
+  if (!userStore.isAuthorized) return await routerPush("login");
 
-  form.image = userStore.user?.image
-  form.username = userStore.user?.username
-  form.bio = userStore.user?.bio
-  form.email = userStore.user?.email
-})
+  form.image = userStore.user?.image;
+  form.username = userStore.user?.username;
+  form.bio = userStore.user?.bio;
+  form.email = userStore.user?.email;
+});
 
-const isButtonDisabled = computed(() =>
-  form.image === userStore.user?.image
-  && form.username === userStore.user?.username
-  && form.bio === userStore.user?.bio
-  && form.email === userStore.user?.email
-  && !form.password,
-)
+const isButtonDisabled = computed(
+  () =>
+    form.image === userStore.user?.image &&
+    form.username === userStore.user?.username &&
+    form.bio === userStore.user?.bio &&
+    form.email === userStore.user?.email &&
+    !form.password
+);
 </script>

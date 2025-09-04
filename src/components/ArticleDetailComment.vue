@@ -16,7 +16,7 @@
           :src="comment.author.image"
           class="comment-author-img"
           :alt="comment.author.username"
-        >
+        />
       </AppLink>
 
       &nbsp;
@@ -29,7 +29,9 @@
         {{ comment.author.username }}
       </AppLink>
 
-      <span class="date-posted">{{ (new Date(comment.createdAt)).toLocaleDateString('en-US') }}</span>
+      <span class="date-posted">{{
+        new Date(comment.createdAt).toLocaleDateString("en-US")
+      }}</span>
 
       <span class="mod-options">
         <i
@@ -47,18 +49,22 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import type { Comment } from 'src/services/api'
+import { computed } from "vue";
+import type { Comment } from "src/services/api";
 
 interface Props {
-  comment: Comment
-  username?: string
+  comment: Comment;
+  username?: string;
 }
 
-const props = defineProps<Props>()
+const props = defineProps<Props>();
 const emit = defineEmits<{
-  (e: 'remove-comment'): boolean
-}>()
+  (e: "remove-comment"): boolean;
+}>();
 
-const showRemove = computed(() => props.username !== undefined && props.username === props.comment.author.username)
+const showRemove = computed(
+  () =>
+    props.username !== undefined &&
+    props.username === props.comment.author.username
+);
 </script>

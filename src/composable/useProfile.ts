@@ -1,32 +1,33 @@
-import type { ComputedRef } from 'vue'
-import { ref, watch } from 'vue'
-import { api } from 'src/services'
-import type { Profile } from 'src/services/api'
+import type { ComputedRef } from "vue";
+import { ref, watch } from "vue";
+import { api } from "src/services";
+import type { Profile } from "src/services/api";
 
 interface UseProfileProps {
-  username: ComputedRef<string>
+  username: ComputedRef<string>;
 }
 
 export function useProfile({ username }: UseProfileProps) {
-  const profile = ref<Profile | null>(null)
+  const profile = ref<Profile | null>(null);
 
   async function fetchProfile(): Promise<void> {
-    updateProfile(null)
-    if (!username.value)
-      return
+    updateProfile(null);
+    if (!username.value) return;
 
-    const profileData = await api.profiles.getProfileByUsername(username.value).then(res => res.data.profile)
-    updateProfile(profileData)
+    const profileData = await api.profiles
+      .getProfileByUsername(username.value)
+      .then((res) => res.data.profile);
+    updateProfile(profileData);
   }
 
   function updateProfile(profileData: Profile | null): void {
-    profile.value = profileData
+    profile.value = profileData;
   }
 
-  watch(username, fetchProfile, { immediate: true })
+  watch(username, fetchProfile, { immediate: true });
 
   return {
     profile,
     updateProfile,
-  }
+  };
 }

@@ -16,9 +16,9 @@
 </template>
 
 <script setup lang="ts">
-import { useTags } from 'src/composable/useTags'
+import { useTags } from "src/composable/useTags";
 
-const { tags, fetchTags } = useTags()
+const { tags, fetchTags } = useTags();
 
-await fetchTags()
+await fetchTags();
 </script>
