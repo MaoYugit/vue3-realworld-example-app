@@ -3,9 +3,9 @@
     <div class="container page">
       <div class="row">
         <div class="col-md-6 offset-md-3 col-xs-12">
-          <h1 class="text-xs-center">Sign up</h1>
+          <h1 class="text-xs-center">{{ t("register.signUp") }}</h1>
           <p class="text-xs-center">
-            <AppLink name="login"> Have an account? </AppLink>
+            <AppLink name="login">{{ t("register.haveAnAccount") }}</AppLink>
           </p>
 
           <ul class="error-messages">
@@ -55,7 +55,7 @@
               class="btn btn-lg btn-primary pull-xs-right"
               :disabled="!(form.email && form.username && form.password)"
             >
-              Sign up
+              {{ t("register.signUp") }}
             </button>
           </form>
         </div>
@@ -67,10 +67,12 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
 import { routerPush } from "src/router";
+import { useI18n } from "vue-i18n";
 import { api, isFetchError } from "src/services";
 import type { NewUser } from "src/services/api";
 import { useUserStore } from "src/store/user";
 
+const { t } = useI18n();
 const formRef = ref<HTMLFormElement | null>(null);
 const form: NewUser = reactive({
   username: "",

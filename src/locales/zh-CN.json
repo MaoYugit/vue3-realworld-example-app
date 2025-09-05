@@ -17,5 +17,9 @@
   "article": {
     "loadingArticles": "文章正在加载中...",
     "noArticles": "这里还没有文章哦。"
+  },
+  "register": {
+    "signUp": "注册",
+    "haveAnAccount": "已经有账号?"
   }
 }

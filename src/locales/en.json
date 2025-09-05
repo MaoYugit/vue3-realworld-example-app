@@ -17,5 +17,9 @@
   "article": {
     "loadingArticles": "Articles are loading...",
     "noArticles": "No articles are here... yet."
+  },
+  "register": {
+    "signUp": "Sign up",
+    "haveAnAccount": "Have an account?"
   }
 }
