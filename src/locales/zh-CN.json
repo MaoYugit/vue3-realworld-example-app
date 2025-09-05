@@ -24,5 +24,11 @@
     "yourName": "你的姓名",
     "email": "邮箱",
     "password": "密码"
+  },
+  "login": {
+    "signIn": "登录",
+    "needAccount": "去注册?",
+    "email": "邮箱",
+    "password": "密码"
   }
 }

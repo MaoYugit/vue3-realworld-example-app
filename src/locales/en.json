@@ -24,5 +24,11 @@
     "yourName": "Your Name",
     "email": "Email",
     "password": "Password"
+  },
+  "login": {
+    "signIn": "Sign in",
+    "needAccount": "Need an account?",
+    "email": "Email",
+    "password": "Password"
   }
 }

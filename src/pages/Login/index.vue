@@ -3,9 +3,9 @@
     <div class="container page">
       <div class="row">
         <div class="col-md-6 offset-md-3 col-xs-12">
-          <h1 class="text-xs-center">Sign in</h1>
+          <h1 class="text-xs-center">{{ t("login.signIn") }}</h1>
           <p class="text-xs-center">
-            <AppLink name="register"> Need an account? </AppLink>
+            <AppLink name="register">{{ t("login.needAccount") }}</AppLink>
           </p>
 
           <ul class="error-messages">
@@ -22,7 +22,7 @@
                 class="form-control form-control-lg"
                 type="email"
                 required
-                placeholder="Email"
+                :placeholder="t('login.email')"
               />
             </fieldset>
             <fieldset class="form-group">
@@ -32,7 +32,7 @@
                 class="form-control form-control-lg"
                 type="password"
                 required
-                placeholder="Password"
+                :placeholder="t('login.password')"
               />
             </fieldset>
             <button
@@ -40,7 +40,7 @@
               :disabled="!form.email || !form.password"
               type="submit"
             >
-              Sign in
+              {{ t("login.signIn") }}
             </button>
           </form>
         </div>
@@ -51,10 +51,13 @@
 
 <script setup lang="ts">
 import { reactive, ref } from "vue";
+import { useI18n } from "vue-i18n";
 import { routerPush } from "src/router";
 import { api, isFetchError } from "src/services";
 import type { LoginUser } from "src/services/api";
 import { useUserStore } from "src/store/user";
+
+const { t } = useI18n();
 
 const formRef = ref<HTMLFormElement | null>(null);
 const form: LoginUser = reactive({
