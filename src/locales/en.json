@@ -20,6 +20,9 @@
   },
   "register": {
     "signUp": "Sign up",
-    "haveAnAccount": "Have an account?"
+    "haveAnAccount": "Have an account?",
+    "yourName": "Your Name",
+    "email": "Email",
+    "password": "Password"
   }
 }

@@ -26,7 +26,7 @@
                 class="form-control form-control-lg"
                 type="text"
                 required
-                placeholder="Your Name"
+                :placeholder="t('register.yourName')"
               />
             </fieldset>
             <fieldset class="form-group">
@@ -36,7 +36,7 @@
                 class="form-control form-control-lg"
                 type="email"
                 required
-                placeholder="Email"
+                :placeholder="t('register.email')"
               />
             </fieldset>
             <fieldset class="form-group">
@@ -47,7 +47,7 @@
                 type="password"
                 :minLength="8"
                 required
-                placeholder="Password"
+                :placeholder="t('register.password')"
               />
             </fieldset>
             <button
