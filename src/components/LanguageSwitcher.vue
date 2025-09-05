@@ -40,6 +40,7 @@ function onLocaleChange(event: Event) {
 .language-switcher select {
   background-color: transparent;
   margin-top: 8px;
+  padding-bottom: 4px;
   border: 1px solid #ccc;
   border-radius: 5px;
   color: #aaa;
