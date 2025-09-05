@@ -1,14 +1,10 @@
 import type { Ref } from "vue";
 import { ref } from "vue";
-
-// ‼️‼️‼️⭐⭐⭐TODO: 我们需要为整个应用建立一个全局的 401 错误处理机制。⭐⭐⭐‼️‼️‼️”
-// import { routerPush } from "src/router/index.ts";
-// import { isFetchError } from "src/services";
-// import { userStorage } from "src/store/user.ts";
+import { handleGlobalError } from "./errorHandler";
 
 interface UseAsync<T extends (...args: unknown[]) => unknown> {
   active: Ref<boolean>;
-  run: (...args: Parameters<T>) => Promise<ReturnType<T>>;
+  run: (...args: Parameters<T>) => Promise<ReturnType<T> | void>;
 }
 
 export default function useAsync<T extends (...args: unknown[]) => unknown>(
@@ -22,12 +18,7 @@ export default function useAsync<T extends (...args: unknown[]) => unknown>(
       const result = await fn(...args);
       return result as ReturnType<T>;
     } catch (error) {
-      // if (isFetchError(error) && error.status === 401) {
-      //   userStorage.remove();
-      //   await routerPush("login");
-      //   throw new Error("Unauthorized or token expired");
-      // }
-      throw error;
+      await handleGlobalError(error);
     } finally {
       active.value = false;
     }
