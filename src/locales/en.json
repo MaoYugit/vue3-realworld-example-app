@@ -32,7 +32,8 @@
     "follow": "Follow",
     "unfollow": "Unfollow",
     "unfavorite": "Unfavorite",
-    "favorite": "Favorite"
+    "favorite": "Favorite",
+    "readMore": "Read more..."
   },
   "register": {
     "signUp": "Sign up",
