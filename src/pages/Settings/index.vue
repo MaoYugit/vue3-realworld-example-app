@@ -3,7 +3,7 @@
     <div class="container page">
       <div class="row">
         <div class="col-md-6 offset-md-3 col-xs-12">
-          <h1 class="text-xs-center">Your Settings</h1>
+          <h1 class="text-xs-center">{{ t("setting.setting") }}</h1>
 
           <ul class="error-messages">
             <li v-for="(error, field) in errors" :key="field">
@@ -19,7 +19,7 @@
                   aria-label="Avatar picture url"
                   type="text"
                   class="form-control"
-                  placeholder="URL of profile picture"
+                  :placeholder="t('setting.URLofPP')"
                 />
               </fieldset>
               <fieldset class="form-group">
@@ -28,7 +28,7 @@
                   aria-label="Username"
                   type="text"
                   class="form-control form-control-lg"
-                  placeholder="Your name"
+                  :placeholder="t('setting.name')"
                 />
               </fieldset>
               <fieldset class="form-group">
@@ -37,7 +37,7 @@
                   aria-label="Bio"
                   class="form-control form-control-lg"
                   :rows="8"
-                  placeholder="Short bio about you"
+                  :placeholder="t('setting.bio')"
                 />
               </fieldset>
               <fieldset class="form-group">
@@ -46,7 +46,7 @@
                   aria-label="Email"
                   type="email"
                   class="form-control form-control-lg"
-                  placeholder="Email"
+                  :placeholder="t('setting.email')"
                 />
               </fieldset>
               <fieldset class="form-group">
@@ -55,7 +55,7 @@
                   aria-label="New password"
                   type="password"
                   class="form-control form-control-lg"
-                  placeholder="New password"
+                  :placeholder="t('setting.newPassword')"
                 />
               </fieldset>
               <button
@@ -63,7 +63,7 @@
                 :disabled="isButtonDisabled"
                 type="submit"
               >
-                Update Settings
+                {{ t("setting.updateSetting") }}
               </button>
             </fieldset>
           </form>
@@ -75,7 +75,7 @@
             aria-label="Logout"
             @click="onLogout"
           >
-            Or click here to logout.
+            {{ t("setting.logout") }}
           </button>
         </div>
       </div>
@@ -86,9 +86,12 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref } from "vue";
 import { routerPush } from "src/router";
+import { useI18n } from "vue-i18n";
 import { api, isFetchError } from "src/services";
 import type { UpdateUser } from "src/services/api";
 import { useUserStore } from "src/store/user";
+
+const { t } = useI18n();
 
 const form: UpdateUser = reactive({});
 

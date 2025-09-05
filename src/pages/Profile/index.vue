@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-xs-12 col-md-10 offset-md-1">
             <div v-if="!profile" class="align-left">
-              Profile is downloading...
+              {{ t("profile.profileDownloading") }}
             </div>
             <template v-else>
               <img
@@ -27,7 +27,7 @@
                 aria-label="Edit profile settings"
               >
                 <i class="ion-gear-a space" />
-                Edit profile settings
+                {{ t("profile.editorProfile") }}
               </AppLink>
 
               <button
@@ -51,7 +51,7 @@
         <div class="col-xs-12 col-md-10 offset-md-1">
           <Suspense>
             <ArticlesList use-user-feed use-user-favorited />
-            <template #fallback> Articles are downloading... </template>
+            <template #fallback>{{ t("profile.articleDownloading") }}</template>
           </Suspense>
         </div>
       </div>
@@ -68,6 +68,9 @@ import { useFollow } from "src/composable/useFollowProfile";
 import { useProfile } from "src/composable/useProfile";
 import type { Profile } from "src/services/api";
 import { useUserStore } from "src/store/user";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 const route = useRoute();
 const username = computed<string>(() => route.params.username as string);

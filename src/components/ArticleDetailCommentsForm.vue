@@ -1,8 +1,9 @@
 <template>
   <p v-if="!profile">
-    <AppLink name="login"> Sign in </AppLink> or
-    <AppLink name="register"> sign up </AppLink> to add comments on this
-    article.
+    <AppLink name="login"> {{ t("login.signIn") }} </AppLink>
+    {{ t("login.or") }}
+    <AppLink name="register"> {{ t("register.signUp") }} </AppLink>
+    {{ t("article.commentsAdd") }}
   </p>
   <form v-else class="card comment-form" @submit.prevent="submitComment">
     <div class="card-block">
@@ -10,7 +11,7 @@
         v-model="comment"
         aria-label="Write comment"
         class="form-control"
-        placeholder="Write a comment..."
+        :placeholder="t('article.commentWrite')"
         :rows="3"
       />
     </div>
@@ -26,7 +27,7 @@
         :disabled="comment === ''"
         class="btn btn-sm btn-primary"
       >
-        Post Comment
+        {{ t("article.commentPost") }}
       </button>
     </div>
   </form>
@@ -39,6 +40,9 @@ import { useProfile } from "src/composable/useProfile";
 import { api } from "src/services";
 import type { Comment } from "src/services/api";
 import { useUserStore } from "src/store/user";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 interface Props {
   articleSlug: string;

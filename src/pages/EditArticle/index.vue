@@ -10,7 +10,7 @@
                 aria-label="Title"
                 type="text"
                 class="form-control form-control-lg"
-                placeholder="Article Title"
+                :placeholder="t('article.title')"
               />
             </fieldset>
             <fieldset class="form-group">
@@ -19,7 +19,7 @@
                 aria-label="Description"
                 type="text"
                 class="form-control form-control-lg"
-                placeholder="What's this article about?"
+                :placeholder="t('article.abour')"
               />
             </fieldset>
             <fieldset class="form-group">
@@ -28,7 +28,7 @@
                 aria-label="Body"
                 :rows="8"
                 class="form-control"
-                placeholder="Write your article (in markdown)"
+                :placeholder="t('article.white')"
               />
             </fieldset>
             <fieldset class="form-group">
@@ -37,7 +37,7 @@
                 aria-label="Tags"
                 type="text"
                 class="form-control"
-                placeholder="Enter tags"
+                :placeholder="t('article.tag')"
                 @change="addTag"
                 @keypress.enter.prevent="addTag"
               />
@@ -64,7 +64,7 @@
               type="submit"
               :disabled="!(form.title && form.description && form.body)"
             >
-              Publish Article
+              {{ t("article.publish") }}
             </button>
           </form>
         </div>
@@ -76,8 +76,11 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
+import { useI18n } from "vue-i18n";
 import { api } from "src/services";
 import type { Article } from "src/services/api";
+
+const { t } = useI18n();
 
 interface FormState {
   title: string;

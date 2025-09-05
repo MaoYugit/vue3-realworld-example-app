@@ -15,8 +15,24 @@
     "settings": "Settings"
   },
   "article": {
+    "article": "article",
     "loadingArticles": "Articles are loading...",
-    "noArticles": "No articles are here... yet."
+    "loadingComments": "Comments are downloading...",
+    "noArticles": "No articles are here... yet.",
+    "title": "Article Title",
+    "abour": "What's this article about?",
+    "white": "Write your article (in markdown)",
+    "tag": "Enter tags",
+    "publish": "Publish Article",
+    "commentsAdd": "to add comments on this article.",
+    "commentPost": "Post Comment",
+    "commentWrite": "Write a comment...",
+    "editArticle": "Edit Article",
+    "deleteArticle": "Delete Article",
+    "follow": "Follow",
+    "unfollow": "Unfollow",
+    "unfavorite": "Unfavorite",
+    "favorite": "Favorite"
   },
   "register": {
     "signUp": "Sign up",
@@ -29,6 +45,22 @@
     "signIn": "Sign in",
     "needAccount": "Need an account?",
     "email": "Email",
-    "password": "Password"
+    "password": "Password",
+    "or": "or"
+  },
+  "setting": {
+    "setting": "Your Settings",
+    "URLofPP": "URL of profile picture",
+    "name": "Your name",
+    "bio": "Short bio about you",
+    "email": "Email",
+    "newPassword": "New password",
+    "updateSetting": "Update Settings",
+    "logout": "Or click here to logout."
+  },
+  "profile": {
+    "profileDownloading": "Profile is downloading...",
+    "editorProfile": "Edit profile settings",
+    "articleDownloading": " Articles are downloading..."
   }
 }

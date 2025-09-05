@@ -15,8 +15,24 @@
     "settings": "设置"
   },
   "article": {
+    "article": "文章",
     "loadingArticles": "文章正在加载中...",
-    "noArticles": "这里还没有文章哦。"
+    "loadingComments": "评论正在加载中...",
+    "noArticles": "这里还没有文章哦。",
+    "title": "文章标题",
+    "abour": "这篇文章是关于什么的?",
+    "white": "书写你的文章（Markdown 格式）",
+    "tag": "标签",
+    "publish": "发布文章",
+    "commentsAdd": "来发布评论",
+    "commentPost": "发布评论",
+    "commentWrite": "写一个评论...",
+    "editArticle": "编辑文章",
+    "deleteArticle": "删除文章",
+    "follow": "关注",
+    "unfollow": "取关",
+    "unfavorite": "取消点赞",
+    "favorite": "点赞"
   },
   "register": {
     "signUp": "注册",
@@ -29,6 +45,22 @@
     "signIn": "登录",
     "needAccount": "去注册?",
     "email": "邮箱",
-    "password": "密码"
+    "password": "密码",
+    "or": "或者"
+  },
+  "setting": {
+    "setting": "个人设置",
+    "URLofPP": "头像 URL",
+    "name": "姓名",
+    "bio": "关于您的简短个人简介",
+    "email": "邮箱",
+    "newPassword": "新密码",
+    "updateSetting": "更新设置",
+    "logout": "登出"
+  },
+  "profile": {
+    "profileDownloading": "个人资料正在加载...",
+    "editorProfile": "编辑个人资料",
+    "articleDownloading": "文章正在加载..."
   }
 }

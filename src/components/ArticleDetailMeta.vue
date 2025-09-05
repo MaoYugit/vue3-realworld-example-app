@@ -26,7 +26,9 @@
       @click="toggleFollow"
     >
       <i class="ion-plus-round space" />
-      {{ article.author.following ? "Unfollow" : "Follow" }}
+      {{
+        article.author.following ? t("article.unfollow") : t("article.follow")
+      }}
       {{ article.author.username }}
     </button>
 
@@ -40,7 +42,8 @@
       @click="favoriteArticle"
     >
       <i class="ion-heart space" />
-      {{ article.favorited ? "Unfavorite" : "Favorite" }} Article
+      {{ article.favorited ? t("article.unfavorite") : t("article.favorite") }}
+      {{ t("article.article") }}
       <span class="counter">({{ article.favoritesCount }})</span>
     </button>
 
@@ -51,7 +54,7 @@
       name="edit-article"
       :params="{ slug: article.slug }"
     >
-      <i class="ion-edit space" /> Edit Article
+      <i class="ion-edit space" /> {{ t("article.editArticle") }}
     </AppLink>
 
     <button
@@ -60,7 +63,7 @@
       class="btn btn-outline-danger btn-sm"
       @click="onDelete"
     >
-      <i class="ion-trash-a" /> Delete Article
+      <i class="ion-trash-a" /> {{ t("article.deleteArticle") }}
     </button>
   </div>
 </template>
@@ -74,6 +77,9 @@ import { routerPush } from "src/router";
 import { api } from "src/services";
 import type { Article, Profile } from "src/services/api";
 import { useUserStore } from "src/store/user";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 interface Props {
   article: Article;

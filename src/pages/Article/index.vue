@@ -3,7 +3,7 @@
     <Suspense>
       <ArticleDetail />
       <template #fallback>
-        <div class="container page">Article is downloading...</div>
+        <div class="container page">{{ t("article.loadingArticles") }}</div>
       </template>
     </Suspense>
 
@@ -14,7 +14,7 @@
         </div>
       </div>
       <template #fallback>
-        <div class="container page">Comments are downloading...</div>
+        <div class="container page">{{ t("article.loadingComments") }}</div>
       </template>
     </Suspense>
   </div>
@@ -23,6 +23,9 @@
 <script setup lang="ts">
 import ArticleDetail from "src/components/ArticleDetail.vue";
 import ArticleDetailComments from "src/components/ArticleDetailComments.vue";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 </script>
 
 <style scoped>
