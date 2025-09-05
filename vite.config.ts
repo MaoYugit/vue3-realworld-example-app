@@ -16,7 +16,8 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://api.realworld.show",
+        // target: "https://api.realworld.show",
+        target: "http://localhost:3000",
         changeOrigin: true,
       },
     },
