@@ -1,14 +1,17 @@
 /* eslint-disable antfu/consistent-list-newline */
-import insane from "insane";
+import DOMPurify from "dompurify";
 import { marked } from "marked";
 
-export default (markdown?: string): string => {
+// <-- 改动 1: 在函数前加上 async，并修改返回类型为 Promise<string>
+export default async (markdown?: string): Promise<string> => {
   if (!markdown) return "";
-  const html = marked(markdown);
 
-  // eslint-disable-next-line ts/no-unsafe-return,ts/no-unsafe-call
-  return insane(html, {
-    allowedTags: [
+  // <-- 改动 2: 在 marked 调用前加上 await，等待它完成
+  const html = await marked(markdown);
+
+  // 现在，html 变量就是一个真正的字符串了，TypeScript 不再报错
+  const cleanHtml = DOMPurify.sanitize(html, {
+    ALLOWED_TAGS: [
       "a",
       "article",
       "b",
@@ -53,35 +56,25 @@ export default (markdown?: string): string => {
       "u",
       "ul",
     ],
-    allowedAttributes: {
-      a: ["href", "name", "target", "title"],
-      iframe: ["allowfullscreen", "frameborder", "src"],
-      img: ["src", "alt", "title"],
-      i: ["class"],
-      h1: ["id"],
-      h2: ["id"],
-      h3: ["id"],
-      h4: ["id"],
-      h5: ["id"],
-      h6: ["id"],
-      ol: ["start"],
-      code: ["class"],
-      th: ["align", "rowspan"],
-      td: ["align"],
-      input: ["disabled", "type", "checked"],
-    },
-    filter: ({
-      tag,
-      attrs,
-    }: {
-      tag: string;
-      attrs: Record<string, string>;
-    }) => {
-      // Display checklist
-      if (tag === "input")
-        return attrs.type === "checkbox" && attrs.disabled === "";
-
-      return true;
-    },
+    ALLOWED_ATTR: [
+      "href",
+      "name",
+      "target",
+      "title",
+      "allowfullscreen",
+      "frameborder",
+      "src",
+      "alt",
+      "class",
+      "id",
+      "start",
+      "align",
+      "rowspan",
+      "disabled",
+      "type",
+      "checked",
+    ],
   });
+
+  return cleanHtml;
 };

@@ -9,7 +9,7 @@ import { defineConfig } from "vite";
 export default defineConfig({
   resolve: {
     alias: {
-      src: fileURLToPath(new URL("src", import.meta.url)),
+      src: fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
   plugins: [vue(), analyzer({ summaryOnly: true })],

@@ -4,7 +4,7 @@ import { describe, expect, it, vi } from "vitest";
 import { router } from "src/router";
 import fixtures from "src/utils/test/fixtures.ts";
 import { renderOptions, setupMockServer } from "src/utils/test/test.utils.ts";
-import EditArticle from "./EditArticle.vue";
+import EditArticle from "./index.vue";
 
 describe("# EditArticle page", () => {
   const server = setupMockServer();

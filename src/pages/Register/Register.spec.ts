@@ -5,7 +5,7 @@ import {
   renderOptions,
   setupMockServer,
 } from "src/utils/test/test.utils.ts";
-import Register from "./Register.vue";
+import Register from "./index.vue";
 
 describe("# Register form", () => {
   const server = setupMockServer();

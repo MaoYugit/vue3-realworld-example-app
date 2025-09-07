@@ -2,7 +2,7 @@ import { render } from "@testing-library/vue";
 import { describe, expect, it } from "vitest";
 import fixtures from "src/utils/test/fixtures.ts";
 import { renderOptions, setupMockServer } from "src/utils/test/test.utils";
-import Article from "./Article.vue";
+import Article from "./index.vue";
 
 describe("# Article", () => {
   const server = setupMockServer(
@@ -22,8 +22,8 @@ describe("# Article", () => {
       })
     );
 
-    expect(container).toHaveTextContent("Article is downloading");
-    expect(container).toHaveTextContent("Comments are downloading");
+    expect(container).toHaveTextContent("Articles are loading...");
+    expect(container).toHaveTextContent("Comments are downloading...");
 
     await server.waitForRequest("GET", "/api/articles/foo");
 

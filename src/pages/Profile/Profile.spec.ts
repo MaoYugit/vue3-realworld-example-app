@@ -1,6 +1,6 @@
 import { fireEvent, render } from "@testing-library/vue";
 import { describe, expect, it, vi } from "vitest";
-import Profile from "src/pages/Profile.vue";
+import Profile from "src/pages/Profile/index.vue";
 import { router } from "src/router";
 import fixtures from "src/utils/test/fixtures.ts";
 import {

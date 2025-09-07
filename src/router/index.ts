@@ -8,7 +8,7 @@ import { setupGuards } from "./guards"; // 导入守卫设置函数
 // 1. 创建 router 实例
 export const router = createRouter({
   history: createWebHistory(),
-  routes, // 使用从 routes.ts 导入的路由
+  routes: routes || [], // 使用从 routes.ts 导入的路由
 });
 
 // 2. 为 router 实例安装导航守卫

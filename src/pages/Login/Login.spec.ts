@@ -7,7 +7,7 @@ import {
   renderOptions,
   setupMockServer,
 } from "src/utils/test/test.utils.ts";
-import Login from "./Login.vue";
+import Login from "./index.vue";
 
 describe("# Login page", () => {
   const server = setupMockServer();

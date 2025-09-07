@@ -9,6 +9,19 @@ import { setupServer } from "msw/node";
 import { afterAll, afterEach, beforeAll } from "vitest";
 import AppLink from "src/components/AppLink.vue";
 import { routes } from "src/router/routes";
+import { createI18n } from "vue-i18n";
+import enMessages from "src/locales/en.json";
+import zhCnMessages from "src/locales/zh-CN.json";
+
+const i18n = createI18n({
+  locale: "en",
+  fallbackLocale: "en",
+  legacy: false, // 使用 Composition API 模式
+  messages: {
+    en: enMessages,
+    "zh-CN": zhCnMessages,
+  },
+});
 
 export function createTestRouter(base?: string): Router {
   return createRouter({
@@ -54,6 +67,7 @@ export function renderOptions<C>(
     slots: args.slots,
     global: {
       plugins: [
+        i18n,
         router,
         createTestingPinia({
           initialState: {

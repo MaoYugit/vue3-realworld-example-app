@@ -1,11 +1,11 @@
 import userEvent from "@testing-library/user-event";
 import { fireEvent, render, waitFor } from "@testing-library/vue";
 import { describe, expect, it, vi } from "vitest";
-import { router } from "src/router";
+import { router } from "src/router/index";
 import { useUserStore } from "src/store/user.ts";
 import fixtures from "src/utils/test/fixtures.ts";
 import { renderOptions, setupMockServer } from "src/utils/test/test.utils.ts";
-import Settings from "./Settings.vue";
+import Settings from "./index.vue";
 
 describe("# Settings Page", () => {
   const server = setupMockServer();
