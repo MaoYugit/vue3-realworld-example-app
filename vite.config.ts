@@ -13,7 +13,9 @@ export default defineConfig({
     },
   },
   plugins: [vue(), analyzer({ summaryOnly: true })],
+
   server: {
+    host: true,
     proxy: {
       "/api": {
         // target: "https://api.realworld.show",
