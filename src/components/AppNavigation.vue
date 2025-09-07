@@ -1,24 +1,34 @@
 <template>
-  <nav class="navbar navbar-light">
-    <div class="container">
-      <AppLink class="navbar-brand" name="global-feed">
+  <!-- 1. 导航栏主体：白色背景，底部有柔和的阴影和边框 -->
+  <nav class="bg-white shadow-sm border-b border-gray-200">
+    <!-- 2. 内容容器：限制最大宽度并居中，使用 flex 实现内部元素两端对齐 -->
+    <div class="container mx-auto flex items-center justify-between p-4">
+      <!-- 3. 品牌 Logo/链接：使用醒目的颜色和更大的字号 -->
+      <AppLink class="text-sky-500 text-2xl font-bold" name="global-feed">
         {{ t("global.conduit") }}
       </AppLink>
 
-      <ul class="nav navbar-nav pull-xs-right">
-        <li v-for="link in navLinks" :key="link.name" class="nav-item">
+      <!-- 4. 导航链接列表：使用 flex 布局，并为各项之间添加间距 -->
+      <ul class="flex items-center space-x-2 md:space-x-4">
+        <li v-for="link in navLinks" :key="link.name" class="">
+          <!-- 5. 单个导航链接：
+               - 基础样式：灰色文字，提供内边距以扩大点击区域
+               - 交互样式：鼠标悬停时文字颜色加深
+               - 激活样式：当路由匹配时，"active" 类会被应用，文字变为更深的颜色并加粗
+               - 过渡效果：让颜色变化更平滑
+          -->
           <AppLink
-            class="nav-link"
+            class="flex items-center px-3 py-2 text-gray-500 hover:text-gray-900 transition-colors duration-300"
             active-class="active"
             :name="link.name"
             :params="link.params"
             :aria-label="link.title"
           >
-            <i v-if="link.icon" :class="link.icon" />
+            <i v-if="link.icon" :class="[link.icon, 'mr-1.5']" />
             {{ link.title }}
           </AppLink>
         </li>
-        <li class="nav-item">
+        <li>
           <LanguageSwitcher />
         </li>
       </ul>
