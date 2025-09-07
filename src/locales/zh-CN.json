@@ -1,4 +1,8 @@
 {
+  "global": {
+    "conduit": "知渠",
+    "slogan": "一个分享你知识的地方"
+  },
   "navigation": {
     "globalFeed": "全部文章",
     "myFeed": "我的关注",
@@ -18,6 +22,7 @@
     "article": "文章",
     "loadingArticles": "文章正在加载中...",
     "loadingComments": "评论正在加载中...",
+    "loadingTags": "热门标签正在加载中...",
     "noArticles": "这里还没有文章哦。",
     "title": "文章标题",
     "abour": "这篇文章是关于什么的?",

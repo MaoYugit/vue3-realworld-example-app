@@ -7,12 +7,12 @@
         <!-- 网站 Logo/标题 -->
         <h1 class="logo-font">
           <!-- conduit -->
-          知渠
+          {{ t("global.conduit") }}
         </h1>
         <!-- 网站的 Slogan/口号 -->
         <p>
           <!-- A place to share your knowledge. -->
-          一个分享你知识的地方
+          {{ t("global.slogan") }}
         </p>
       </div>
     </div>
@@ -30,7 +30,7 @@
             <!-- #fallback 插槽：这是 Suspense 的一部分。 -->
             <template #fallback>
               <!-- Articles are downloading...  -->
-              文章正在加载当中......
+              {{ t("article.loadingArticles") }}
             </template>
           </Suspense>
         </div>
@@ -46,7 +46,7 @@
               <!-- #fallback 插槽：在热门标签数据加载完成前显示的内容。 -->
               <template #fallback>
                 <!-- Popular tags are downloading...  -->
-                热门标签正在加载当中......
+                {{ t("article.loadingTags") }}
               </template>
             </Suspense>
           </div>
@@ -59,4 +59,7 @@
 <script setup lang="ts">
 import ArticlesList from "src/components/ArticlesList.vue";
 import PopularTags from "src/components/PopularTags.vue";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 </script>

@@ -1,7 +1,9 @@
 <template>
   <nav class="navbar navbar-light">
     <div class="container">
-      <AppLink class="navbar-brand" name="global-feed"> 知渠 </AppLink>
+      <AppLink class="navbar-brand" name="global-feed">
+        {{ t("global.conduit") }}
+      </AppLink>
 
       <ul class="nav navbar-nav pull-xs-right">
         <li v-for="link in navLinks" :key="link.name" class="nav-item">

@@ -1,4 +1,8 @@
 {
+  "global": {
+    "conduit": "Conduit",
+    "slogan": "A place to share your knowledge."
+  },
   "navigation": {
     "globalFeed": "Global Feed",
     "myFeed": "Your Feed",
@@ -18,6 +22,7 @@
     "article": "article",
     "loadingArticles": "Articles are loading...",
     "loadingComments": "Comments are downloading...",
+    "loadingTags": "Popular tags are downloading...",
     "noArticles": "No articles are here... yet.",
     "title": "Article Title",
     "abour": "What's this article about?",
